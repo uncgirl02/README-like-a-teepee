@@ -16,6 +16,7 @@
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
+  const license = data.license
   if (!license) {
     return '';
   };
@@ -102,7 +103,9 @@ function generateMarkdown(data) {
   <br />
 
   This application is covered by the ${data.license} license. 
-  
+
+  ${license}
+
   ## Contributing
   
   ${data.contributing}
