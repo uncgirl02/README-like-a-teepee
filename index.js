@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+//Include packages needed for this application
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js')
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+//Create an array of questions for user input
 const promptData = () => {
     return inquirer.prompt([
         {
@@ -52,7 +52,7 @@ const promptData = () => {
             type: 'checkbox',
             name: 'license',
             message: 'Which license is your project covered under?',  
-            choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
+            choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public 2.0', 'Apache 2.0', 'MIT', 'Boost Software 1.0', 'The Unlicense']
         },
         {
             type: 'input',
@@ -71,50 +71,36 @@ const promptData = () => {
         },
         {
             type: 'input',
-            name: 'link',
-            message: 'What is the link to your GitHub profile?',  
-        },
-        {
-            type: 'input',
             name: 'email',
             message: 'What is your e-mail address?',  
         },
     ])
-    .then (data => {
-        console.log(generateMarkdown(data));
-        
-    })
+}   
 
-}; 
-
-// TODO: Create a function to write README file
-const writeFile = data => {
-    let markdownData = generateMarkdown(data);
+// Create a function to write the file
+function writeToFile(filename, data) {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/README.md', markdownData, err => {
-          if (err) {
-            reject(err);
-            return;
-          }
-    
-          resolve({
-            ok: true,
-            message: 'File created!'
+        fs.writeFile(filename, generateMarkdown(data), err => {
+            if (err) {
+              reject(err);
+              return;
+            }
+      
+            resolve({
+              ok: true,
+              message: 'File created!'
+            });
           });
         });
-      });
-    };
+      };
 
-// TODO: Create a function to initialize app
+// Create a function to initialize app
 function init() {
-promptData()
-    // .then(data => {
-        // return generateMarkdown(data)
-    // })
-    .then(readmeFile => {
-        return writeFile(readmeFile)
-    })  
-};
+    promptData()
+        .then(data => {
+            return writeToFile("./dist/README.md", data);  
+        })
+}
 
 // Function call to initialize app
-init();
+init()

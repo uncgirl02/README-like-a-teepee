@@ -1,6 +1,7 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {
+function renderLicenseBadge(data) {
+  
   if (!data.license) {
     return '';
   }
@@ -97,13 +98,15 @@ function renderLicenseLink(data) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `
+  
+  # ${data.title}
     
-  ${renderLicenseBadge(license)}
+  ${renderLicenseBadge(data)}
  
   ## Description
  
-  🔍 ${data.description}
+  ${data.description}
  
   ## Table of Contents
   
@@ -125,7 +128,7 @@ function generateMarkdown(data) {
 
   ## License
   
-  ${renderLicenseBadge(license)}
+  ${renderLicenseBadge(data)}
 
   This application is covered by the ${data.license} license. 
 
@@ -141,11 +144,11 @@ function generateMarkdown(data) {
   
   ## Questions
  
-  Find me on GitHub: [${data.username}](https://github.com/${data.username})<br />
-  <br />
+  Find me on GitHub: [https://github.com/${data.username}](https://github.com/${data.username})
+  
   Email me with any questions: ${data.email}
-      `;
-    }
+  `;
+}
     
 
 module.exports = generateMarkdown;
