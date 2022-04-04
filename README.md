@@ -26,6 +26,8 @@
 
   Run "node index.js" from the command prompt and answer the questions that are prompted in the console.  The README.md file will be created in the "dist" directory.
 
+  https://user-images.githubusercontent.com/96963668/161483154-7bc2f967-5f1e-4f2e-b1e1-f9a651dba12b.mp4
+  
   ## License
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
